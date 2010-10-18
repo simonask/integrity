@@ -8,7 +8,7 @@ module Integrity
     end
 
     def checkout
-      run "git clone #{@uri} #{directory}", false unless cloned?
+      run "git clone --depth 1 #{@uri} #{directory}", false unless cloned?
       run "git fetch origin"
       run "git checkout origin/#{@branch}"
       run "git reset --hard #{@commit}"
